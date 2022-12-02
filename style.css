@@ -1,0 +1,19 @@
+body {
+    background-color: dimgray;
+}
+
+div {
+    /*display: inline-block;*/
+    display: inline-block;
+    width: 200px;
+}
+
+h1 {
+    margin: 10px auto;
+    text-align: center;
+    font-family: "Gill Sans Nova", serif;
+}
+
+label {
+    font-family: "Gill Sans Nova", serif;
+}
