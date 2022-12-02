@@ -10,7 +10,7 @@ let e3p = document.getElementById('element3percent').value;
 let e4p = document.getElementById('element4percent').value;
 let e5p = document.getElementById('element5percent').value;
 
-const list = [
+const massList = [
         1.00794,
         4.002602,
         6.941,
@@ -131,19 +131,175 @@ const list = [
         294
 ];
 
+const symbolList = [
+        "H",
+        "He",
+        "Li",
+        "Be",
+        "B",
+        "C",
+        "N",
+        "O",
+        "F",
+        "Ne",
+        "Na",
+        "Mg",
+        "Al",
+        "Si",
+        "P",
+        "S",
+        "Cl",
+        "Ar",
+        "K",
+        "Ca",
+        "Sc",
+        "Ti",
+        "V",
+        "Cr",
+        "Mn",
+        "Fe",
+        "Co",
+        "Ni",
+        "Cu",
+        "Zn",
+        "Ga",
+        "Ge",
+        "As",
+        "Se",
+        "Br",
+        "Kr",
+        "Rb",
+        "Sr",
+        "Y",
+        "Zr",
+        "Nb",
+        "Mo",
+        "Tc",
+        "Ru",
+        "Rh",
+        "Pd",
+        "Ag",
+        "Cd",
+        "In",
+        "Sn",
+        "Sb",
+        "Te",
+        "I",
+        "Xe",
+        "Cs",
+        "Ba",
+        "La",
+        "Ce",
+        "Pr",
+        "Nd",
+        "Pm",
+        "Sm",
+        "Eu",
+        "Gd",
+        "Tb",
+        "Dy",
+        "Ho",
+        "Er",
+        "Tm",
+        "Yb",
+        "Lu",
+        "Hf",
+        "Ta",
+        "W",
+        "Re",
+        "Os",
+        "Ir",
+        "Pt",
+        "Au",
+        "Hg",
+        "Tl",
+        "Pb",
+        "Bi",
+        "Po",
+        "At",
+        "Rn",
+        "Fr",
+        "Ra",
+        "Ac",
+        "Th",
+        "Pa",
+        "U",
+        "Np",
+        "Pu",
+        "Am",
+        "Cm",
+        "Bk",
+        "Cf",
+        "Es",
+        "Fm",
+        "Md",
+        "No",
+        "Lr",
+        "Rf",
+        "Db",
+        "Sg",
+        "Bh",
+        "Hs",
+        "Mt",
+        "Ds",
+        "Rg",
+        "Cn",
+        "Nh",
+        "Fl",
+        "Mc",
+        "Lv",
+        "Ts",
+        "Og"
+]
+
+
 function calc() {
 
-        let vals = [
-                e1p / list[e1t-1],
-                e2p / list[e2t-1],
-                e3p / list[e3t-1],
-                e4p / list[e4t-1],
-                e5p / list[e5t-1]
-        ];
+        if(e1t !== "" && e1p !== "") {
+                val1 = e1p / massList[e1t-1];
+        } else { val1 = NaN;}
+        if(e2t !== "" && e2p !== "") {
+                val2 = e2p / massList[e2t-1];
+        } else { val2 = NaN;}
+        if(e3t !== "" && e3p !== "") {
+                val3 = e3p / massList[e3t-1];
+        } else { val3 = NaN;}
+        if(e4t !== "" && e4p !== "") {
+                val4 = e4p / massList[e4t-1];
+        } else { val4 = NaN;}
+        if(e5t !== "" && e5p !== "") {
+                val5 = e5p / massList[e5t-1];
+        } else { val5 = NaN;}
 
-        let lowest = Math.min(...vals);
+        let val = [
+            val1,
+            val2,
+            val3,
+            val4,
+            val5
+        ]
 
-        vals /= lowest;
+        val = val.filter(function(item) {
+                return !isNaN(item);
+        })
 
-        alert("Your value is: ");
+        let min = Math.min(...val);
+
+        for(let i = 0; i < val.length; i++) {
+                val[i] = Math.round(val[i]/min);
+        }
+
+
+        let final = [];
+
+        for(let i = 0; i < val.length; i++) {
+                if(val[i] !== 1) {
+                        final.push(symbolList[i] + val[i].toString().sub());
+                } else {
+                        final.push(symbolList[i]);
+                }
+        }
+
+        document.getElementById("result").innerHTML = final;
+
 }
