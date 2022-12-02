@@ -10,15 +10,15 @@ div {
 h1 {
     margin: 10px auto;
     text-align: center;
-    font-family: "Gill Sans Nova", serif;
+    font-family: "Source Code Pro Black", monospace;
 }
 
 label {
-    font-family: "Gill Sans Nova", serif;
+    font-family: "Source Code Pro", monospace;
 }
 
 #result {
     font-size: 30px;
     text-align: center;
-    font-family: "Gill Sans Nova", serif;
+    font-family: "Source Code Pro", monospace;
 }

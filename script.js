@@ -1,8 +1,10 @@
-let e1t = document.getElementById('element1num').value;
-let e2t = document.getElementById('element2num').value;
-let e3t = document.getElementById('element3num').value;
-let e4t = document.getElementById('element4num').value;
-let e5t = document.getElementById('element5num').value;
+let et = [
+        document.getElementById('element1num').value,
+        document.getElementById('element2num').value,
+        document.getElementById('element3num').value,
+        document.getElementById('element4num').value,
+        document.getElementById('element5num').value
+]
 
 let e1p = document.getElementById('element1percent').value;
 let e2p = document.getElementById('element2percent').value;
@@ -255,20 +257,30 @@ const symbolList = [
 
 function calc() {
 
-        if(e1t !== "" && e1p !== "") {
-                val1 = e1p / massList[e1t-1];
-        } else { val1 = NaN;}
-        if(e2t !== "" && e2p !== "") {
-                val2 = e2p / massList[e2t-1];
+        let val1;
+        let val2;
+        let val3;
+        let val4;
+        let val5;
+
+
+
+        if (et[0] !== "" && e1p !== "") {
+                val1 = e1p / massList[et[0] - 1];
+        } else {
+                val1 = NaN;
+        }
+        if(et[1] !== "" && e2p !== "") {
+                val2 = e2p / massList[et[1]-1];
         } else { val2 = NaN;}
-        if(e3t !== "" && e3p !== "") {
-                val3 = e3p / massList[e3t-1];
+        if(et[2] !== "" && e3p !== "") {
+                val3 = e3p / massList[et[2]-1];
         } else { val3 = NaN;}
-        if(e4t !== "" && e4p !== "") {
-                val4 = e4p / massList[e4t-1];
+        if(et[3] !== "" && e4p !== "") {
+                val4 = e4p / massList[et[3]-1];
         } else { val4 = NaN;}
-        if(e5t !== "" && e5p !== "") {
-                val5 = e5p / massList[e5t-1];
+        if(et[4] !== "" && e5p !== "") {
+                val5 = e5p / massList[et[4]-1];
         } else { val5 = NaN;}
 
         let val = [
@@ -294,11 +306,13 @@ function calc() {
 
         for(let i = 0; i < val.length; i++) {
                 if(val[i] !== 1) {
-                        final.push(symbolList[i] + val[i].toString().sub());
+                        final.push(symbolList[et[i] - 1] + val[i].toString().sub());
                 } else {
-                        final.push(symbolList[i]);
+                        final.push(symbolList[et[i] - 1]);
                 }
         }
+
+        console.log(final)
 
         document.getElementById("result").innerHTML = final;
 
