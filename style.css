@@ -3,9 +3,8 @@ body {
 }
 
 div {
-    /*display: inline-block;*/
     display: inline-block;
-    width: 200px;
+    width: 220px;
 }
 
 h1 {
@@ -15,5 +14,11 @@ h1 {
 }
 
 label {
+    font-family: "Gill Sans Nova", serif;
+}
+
+#result {
+    font-size: 30px;
+    text-align: center;
     font-family: "Gill Sans Nova", serif;
 }
